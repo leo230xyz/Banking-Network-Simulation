@@ -1,107 +1,99 @@
-🏦 Secure Enterprise Banking Network Simulation
+# 🏦 Secure Enterprise Banking Network Simulation
 
-This project is a detailed simulation of a multi-branch enterprise banking network, built and configured using Cisco Packet Tracer. It demonstrates expertise in modern network design, including VLAN segmentation, dynamic routing protocols (EIGRP), secure remote access (SSH), centralized services, and robust security policies (Access Control Lists).
+A **comprehensive enterprise banking network simulation** built and configured using **Cisco Packet Tracer**.  
+This project demonstrates advanced **network engineering**, **security**, and **enterprise service integration** — from VLAN segmentation to centralized server management and WAN connectivity.
 
-🚀 Key Features and Implemented Services
+---
 
-This simulation integrates critical networking functions and services to represent a functional enterprise environment:
+## 🚀 Highlights
 
-1. Network Segmentation & Routing
+- 🧩 **VLAN Segmentation** – Logical separation of devices into VLANs (Employees, Servers, Management, Branch) for enhanced performance and security.  
+- 🔁 **Inter-VLAN Routing** – Router-on-a-Stick configuration ensures seamless communication between VLANs.  
+- 🌐 **Dynamic Routing (EIGRP)** – Enables efficient and fault-tolerant routing across HQ and branch offices.  
+- 🔒 **Access Control (ACLs)** – Extended ACLs restrict external access, allowing only DNS and Web services from outside.  
+- 🖥️ **Secure Remote Management** – SSH access and console line passwords enforce strict management security.  
+- 🧭 **Centralized Services** – DHCP, DNS, Web, FTP, Email, and Syslog servers deliver enterprise-grade infrastructure.  
+- 🏗️ **Hierarchical Topology** – HQ and branch offices connected via a simulated WAN following best-practice design principles.
 
-VLAN Implementation: The network is logically segmented into multiple VLANs (e.g., Employees, Servers, Management, Branch) to improve performance, security, and broadcast domain management.
+---
 
-Inter-VLAN Routing: Achieved using a Router-on-a-Stick configuration on the core router, enabling seamless communication between different VLANs.
+## 🗺️ Network Topology Overview
 
-EIGRP (Enhanced Interior Gateway Routing Protocol): Used as the primary routing protocol within the bank's internal network to ensure dynamic and efficient path discovery and fault tolerance.
+**Headquarters (HQ):**
+- Core router and multilayer switch
+- Centralized enterprise servers (DNS, DHCP, FTP, Web, Email, Syslog)
 
-Default Routing: A static default route is configured on the edge router to direct all traffic destined for unknown external networks (the internet/WAN) to the correct gateway.
+**Branch Office:**
+- Local switches and user endpoints
+- Integrated routing via EIGRP
 
-2. Security and Access Control (ACL)
+**WAN / Internet Simulation:**
+- External router emulating internet access
+- ACL boundaries for traffic control and testing
 
-The project includes a critical Extended Access Control List (ACL) implementation on the edge router (HQ-Router) to enforce a security boundary:
+---
 
-Source Network
+## 🛠️ Technologies & Protocols
 
-Destination Access
+| Category        | Protocol / Tool                     | Purpose                                       |
+|-----------------|-------------------------------------|-----------------------------------------------|
+| **Simulation**  | Cisco Packet Tracer                 | Network design, configuration, and testing    |
+| **Routing**     | EIGRP, Static Routing               | Dynamic internal routing and default gateway  |
+| **Security**    | ACLs, SSH, Console Line Protection  | Secure access and traffic filtering           |
+| **Addressing**  | DHCP, VLAN Tagging (802.1Q)         | IP management and logical segmentation        |
+| **Application** | HTTP, DNS, SMTP, POP3, FTP          | Web, email, file sharing, and name resolution |
 
-Rationale
+---
 
-Internal Bank Networks (Trusted)
+## ⚙️ How to Run & Test
 
-Full Access (Any/Any)
+### 🧾 Prerequisites
+- **Cisco Packet Tracer** (latest version recommended)
 
-Employees require unrestricted access to all internal and external services.
+### 🧪 Steps
+1. **Open the Project**  
+   Load the provided `.pkt` file in Cisco Packet Tracer.
 
-External/Unknown Networks (Untrusted)
+2. **Verify Internal Connectivity**  
+   - Ping across VLANs (e.g., HQ PC ↔ Branch PC) to confirm Inter-VLAN and EIGRP routing.
 
-Restricted Access (DNS & Web only)
+3. **Test ACLs**  
+   - ✅ *Expected Success:* HQ PCs can access Web, FTP, and Email servers internally.  
+   - ❌ *Expected Block:* External clients (via OUTSIDE-Router) can **only** reach Web and DNS servers.  
+     Other services (FTP, Email, SSH) are **denied by ACLs**.
 
-Limits external exposure; prevents unauthorized access to sensitive services like FTP, SSH, or Syslog.
+4. **Check DHCP Operation**  
+   - Confirm that PCs automatically receive IP configurations.
 
-SSH Configuration: Devices are configured for SSH access (in preference to Telnet) for secure, encrypted remote management by IT staff.
+5. **Validate Email Flow**  
+   - Test sending and receiving internal emails (e.g., `admin@gmail.com` ↔ `emp@gmail.com`).
 
-Console Line Security: Console access is secured with robust passwords to prevent unauthorized physical access to network devices.
+---
 
-3. Infrastructure and Application Services
+## 💬 Feedback & Contributions
 
-DHCP (Dynamic Host Configuration Protocol): Configured to automatically assign IP addresses, subnet masks, and default gateway information to end devices within specific VLANs.
+💡 Found an issue or have suggestions?  
+Open an **[issue](../../issues)** or start a **[discussion](../../discussions)** to contribute.
 
-DNS Server: Maps domain names (e.g., bank.com, mail.bank.com) to their corresponding IP addresses.
+---
 
-Web Server (HTTP/HTTPS): Hosts the bank's external-facing website, accessible to the public (as governed by the ACL).
+### 🧠 Author Notes
 
-FTP Server (File Transfer Protocol): Configured for internal employee use to manage and share files securely within the network.
+This project is ideal for:
+- Networking students and professionals studying **Cisco enterprise design**  
+- Learners preparing for **CCNA/CCNP** practical labs  
+- Simulation of **real-world secure enterprise environments**
 
-Email Server (SMTP/POP3): Allows employees to send and receive internal communications (user@bank.com).
+---
 
-Syslog Server: Centralizes logging and monitoring of network device events and errors, crucial for operational troubleshooting and security auditing.
+### 📜 License
 
-🗺️ Network Topology
+This project is distributed under the **MIT License**.  
+Feel free to use and modify with proper attribution.
 
-The network design follows a standard hierarchical model, connecting a central Headquarters (HQ) to a Branch Office over a simulated WAN link.
+---
 
-The topology is divided into functional areas:
+⭐ **If you found this project useful, consider starring the repo!**  
+Your support helps grow the open-source networking community.
 
-Headquarters (HQ): Houses the core router, multi-layer switch, and all centralized servers (DNS, Web, Mail, FTP, Syslog).
-
-Branch: Includes its own switch infrastructure and user devices, connected via the EIGRP routing domain.
-
-WAN / External: The connection to the "internet" through a separate router to test the Default Route and the ACL security policy.
-
-🛠️ Technologies & Protocols Used
-
-Category
-
-Protocol / Tool
-
-Purpose
-
-Simulation
-
-Cisco Packet Tracer
-
-Network design, configuration, and testing.
-
-Routing
-
-EIGRP, Static Routing
-
-Dynamic internal routing and external gateway configuration.
-
-Security
-
-Access Control Lists (ACL), SSH, Console Line Security
-
-Filtering traffic, restricting access, and secure device management.
-
-Addressing
-
-DHCP, VLAN Tagging (802.1Q)
-
-Dynamic IP distribution and logical network separation.
-
-Application
-
-HTTP, DNS, SMTP, POP3, FTP
-
-Providing web services, name resolution, email, and file sharing.
+---
