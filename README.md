@@ -105,23 +105,3 @@ Application
 HTTP, DNS, SMTP, POP3, FTP
 
 Providing web services, name resolution, email, and file sharing.
-
-⚙️ How to Test and Run the Project
-
-Prerequisites: You must have the latest version of Cisco Packet Tracer installed.
-
-Open File: Load the project file (.pkt file - assuming you will name/upload it).
-
-Verification Steps:
-
-Internal Connectivity: Test connectivity (Ping) between devices in different VLANs (e.g., an HQ PC to a Branch PC) to confirm EIGRP and Inter-VLAN routing work.
-
-ACL Test (Success): An HQ PC should be able to browse the Web Server, send an email, and access the FTP server.
-
-ACL Test (Failure): An external network PC (OUTSIDE-Router) should only be able to browse the Web Server and query the DNS server. Attempts to access the FTP, Email, or SSH ports should be blocked by the ACL.
-
-DHCP Test: Verify that end devices successfully obtain their IP address automatically from the DHCP server pool.
-
-Email Test: Send and receive an email between two employee PCs (e.g., PC1@bank.com to PC2@bank.com).
-
-Feel free to download the file and explore the router and switch configurations to review the ACL and EIGRP settings!
